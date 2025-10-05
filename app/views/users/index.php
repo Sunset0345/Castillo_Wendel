@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Directory - Sunset</title>
+    <title>Student List - Sunset</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -37,7 +37,7 @@
 
     <div class="max-w-6xl mx-auto mt-10 p-8 rounded-3xl glass-container">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-4xl font-extrabold drop-shadow-lg">User Directory</h1>
+            <h1 class="text-4xl font-extrabold drop-shadow-lg">Student List</h1>
             <div class="flex items-center gap-4">
                 <form method="get" action="<?=site_url('')?>" class="flex items-center gap-2">
                     <input type="text" name="q" value="<?= isset($q) ? htmlspecialchars($q, ENT_QUOTES) : '' ?>" placeholder="Search name or email"
@@ -47,6 +47,7 @@
 
                 <!-- show signed-in user and logout -->
                 <?php $uid = function_exists('lava_instance') ? lava_instance()->session->userdata('user_id') : null; ?>
+                <?php $role = function_exists('lava_instance') ? lava_instance()->session->userdata('role') : null; ?>
                 <?php if ($uid): ?>
                     <?php $user = lava_instance()->UsersModel->find($uid); ?>
                     <div class="text-sm muted">Signed in as <strong><?= htmlspecialchars($user['email'] ?? 'unknown') ?></strong>
@@ -67,7 +68,9 @@
                         <th class="py-4 px-4">Lastname</th>
                         <th class="py-4 px-4">Firstname</th>
                         <th class="py-4 px-4">Email</th>
+                        <?php if ($role === 'admin'): ?>
                         <th class="py-4 px-4">Action</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody class="text-sm">
@@ -82,27 +85,24 @@
                                         <?=($user['email']);?>
                                     </span>
                                 </td>
+                                <?php if ($role === 'admin'): ?>
                                 <td class="py-4 px-4 flex justify-center gap-4">
                                     <?php
-                                    // Check session role; lava_instance()->session is available via kernel
-                                    $role = function_exists('lava_instance') ? lava_instance()->session->userdata('role') : null;
+                                    // preserve querystring and page params
                                     $qs = isset($q) && $q !== '' ? '?q=' . urlencode($q) . (isset($_GET['page']) ? '&page=' . (int)$_GET['page'] : '') : (isset($_GET['page']) ? '?page=' . (int)$_GET['page'] : '');
                                     $update_url = site_url('users/update/'.$user['id']) . $qs;
-                                    $delete_url = site_url('users/delete/'.$user['id']) . $qs;
++                                    $delete_url = site_url('users/delete/'.$user['id']) . $qs;
                                     ?>
-                                    <?php if ($role === 'admin'): ?>
                                     <a href="<?= $update_url; ?>"
                                         class="text-yellow-100 hover:text-white transition-colors" title="Update">
                                         <i class="fa-solid fa-pen-to-square text-lg"></i>
                                     </a>
-                                    <a href="<?= $delete_url; ?>"
++                                    <a href="<?= $delete_url; ?>"
                                         class="text-orange-200 hover:text-orange-300 transition-colors" title="Delete">
                                         <i class="fa-solid fa-trash text-lg"></i>
                                     </a>
-                                    <?php else: ?>
-                                    <span class="text-sky-100 text-xs italic">Restricted</span>
-                                    <?php endif; ?>
                                 </td>
+                                <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>

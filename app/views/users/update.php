@@ -17,7 +17,7 @@
 
   <div class="max-w-6xl mx-auto mt-10 p-8 rounded-3xl glass-container">
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-4xl font-extrabold text-white drop-shadow-lg">User Directory</h1>
+  <h1 class="text-4xl font-extrabold text-white drop-shadow-lg">Student List</h1>
       <div class="flex items-center gap-4">
         <form method="get" action="<?=site_url('')?>" class="flex items-center gap-2">
           <input type="text" name="q" value="<?= isset($q) ? htmlspecialchars($q, ENT_QUOTES) : '' ?>" placeholder="Search name or email"
