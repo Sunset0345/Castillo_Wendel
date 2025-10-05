@@ -9,11 +9,11 @@
 <body class="min-h-screen p-8" style="background: linear-gradient(135deg,#012a4a 0%, #0077b6 50%, #00b4d8 100%); color: #e6f7ff;">
     <div class="max-w-6xl mx-auto">
         <h1 class="text-3xl font-bold mb-6">Admin - Users</h1>
-        <div style="background: rgba(3,57,80,0.16); padding:1.5rem; border-radius:0.5rem; box-shadow:0 10px 30px rgba(2,35,49,0.45); border:1px solid rgba(255,255,255,0.04);">
+        <div style="background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(255,255,255,0.02)); padding:1.5rem; border-radius:0.5rem; box-shadow:0 12px 40px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.03);">
             <div class="flex justify-between items-center mb-4">
                 <?php $page_q = isset($_GET['page']) ? '?page='.(int)$_GET['page'] : ''; ?>
                 <?php if (isset($_GET['q']) && $_GET['q'] !== '') { $page_q = '?q=' . urlencode($_GET['q']) . (isset($_GET['page']) ? '&page='.(int)$_GET['page'] : ''); } ?>
-                <a href="<?= site_url('') . $page_q ?>" class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-400 hover:from-blue-500 rounded text-sm text-white">
+                <a href="<?= site_url('') . $page_q ?>" class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 hover:opacity-95 rounded text-sm text-white">
                     <i class="fa-solid fa-arrow-left"></i> Back to Users
                 </a>
                 <div></div>
@@ -41,7 +41,7 @@
                                         <option value="user" <?= (isset($u['role']) && $u['role'] === 'user') ? 'selected' : '' ?>>User</option>
                                         <option value="admin" <?= (isset($u['role']) && $u['role'] === 'admin') ? 'selected' : '' ?>>Admin</option>
                                     </select>
-                                    <button type="submit" class="ml-2 bg-indigo-600 px-3 py-1 rounded">Save</button>
+                                    <button type="submit" class="ml-2 bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 px-3 py-1 rounded">Save</button>
                                 </form>
                             </td>
                         </tr>

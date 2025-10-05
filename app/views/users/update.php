@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Update User - Oceanic</title>
+  <title>Update User - Sunset</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -44,12 +44,12 @@
       <div class="w-full flex justify-center py-8">
         <div class="w-full max-w-2xl bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-gray-700">
           <div class="flex items-center gap-4 mb-4">
-            <div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full p-3 shadow-md">
+            <div class="bg-gradient-to-br from-yellow-400 via-orange-500 to-pink-500 rounded-full p-3 shadow-lg">
               <i class="fa-solid fa-user-pen text-white text-2xl"></i>
             </div>
             <div>
-              <h2 class="text-2xl font-bold text-white">Update User</h2>
-              <p class="text-sky-200 text-sm">Edit user details. Leave password blank to keep current password.</p>
+              <h2 class="text-2xl font-bold">Update User</h2>
+              <p class="text-yellow-100 text-sm">Edit user details. Leave password blank to keep current password.</p>
             </div>
           </div>
 
@@ -59,31 +59,31 @@
             <input type="hidden" name="page" value="<?= $current_page ?>">
 
             <div>
-              <label class="block text-sky-100 mb-1 font-medium">First Name</label>
+              <label class="block text-yellow-100 mb-1 font-medium">First Name</label>
               <input type="text" name="fname" value="<?= html_escape($user['fname'])?>" required
                      class="w-full px-4 py-3 bg-[rgba(1,42,74,0.08)] text-white border border-[rgba(255,255,255,0.04)] rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none shadow-sm transition duration-200">
             </div>
 
             <div>
-              <label class="block text-sky-100 mb-1 font-medium">Last Name</label>
+              <label class="block text-yellow-100 mb-1 font-medium">Last Name</label>
               <input type="text" name="lname" value="<?= html_escape($user['lname'])?>" required
                      class="w-full px-4 py-3 bg-[rgba(1,42,74,0.08)] text-white border border-[rgba(255,255,255,0.04)] rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none shadow-sm transition duration-200">
             </div>
 
             <div>
-              <label class="block text-sky-100 mb-1 font-medium">Email Address</label>
+              <label class="block text-yellow-100 mb-1 font-medium">Email Address</label>
               <input type="email" name="email" value="<?= html_escape($user['email'])?>" required
                      class="w-full px-4 py-3 bg-[rgba(1,42,74,0.08)] text-white border border-[rgba(255,255,255,0.04)] rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none shadow-sm transition duration-200">
             </div>
 
             <div>
-              <label class="block text-sky-100 mb-1 font-medium">Password <span class="text-xs text-sky-200">(leave blank to keep current)</span></label>
+              <label class="block text-yellow-100 mb-1 font-medium">Password <span class="text-xs text-yellow-100">(leave blank to keep current)</span></label>
               <input type="password" name="password" value=""
                      class="w-full px-4 py-3 bg-[rgba(1,42,74,0.08)] text-white border border-[rgba(255,255,255,0.04)] rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none shadow-sm transition duration-200">
             </div>
 
             <div class="flex gap-3 items-center">
-              <button type="submit" class="flex-1 bg-gradient-to-r from-cyan-500 to-blue-400 hover:from-blue-500 hover:to-sky-500 text-white font-semibold py-3 rounded-xl shadow-lg transition duration-200">
+              <button type="submit" class="flex-1 bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-white font-semibold py-3 rounded-xl shadow-lg transition duration-200">
                 <i class="fa-solid fa-save mr-2"></i> Update Now
               </button>
 
