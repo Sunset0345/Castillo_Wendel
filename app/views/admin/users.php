@@ -15,7 +15,20 @@
                 <div class="text-2xl font-extrabold text-white">Admin Panel</div>
                 <div class="text-sm text-white/90">Manage students & roles</div>
             </div>
-            <div class="text-sm text-white/90">Signed in as <strong><?= htmlspecialchars($this->session->userdata('user_id') ? $this->UsersModel->find($this->session->userdata('user_id'))['email'] ?? 'admin' : 'admin') ?></strong></div>
+            <?php
+                $current_user_email = 'admin';
+                if (function_exists('lava_instance')) {
+                    $lv = lava_instance();
+                    $uid = $lv->session->userdata('user_id');
+                    if ($uid) {
+                        $found = $lv->UsersModel->find($uid);
+                        if ($found && isset($found['email'])) {
+                            $current_user_email = htmlspecialchars($found['email']);
+                        }
+                    }
+                }
+            ?>
+            <div class="text-sm text-white/90">Signed in as <strong><?= $current_user_email ?></strong></div>
         </div>
     </header>
 
