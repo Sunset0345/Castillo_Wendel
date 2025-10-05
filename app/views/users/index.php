@@ -91,13 +91,13 @@
                                     // preserve querystring and page params
                                     $qs = isset($q) && $q !== '' ? '?q=' . urlencode($q) . (isset($_GET['page']) ? '&page=' . (int)$_GET['page'] : '') : (isset($_GET['page']) ? '?page=' . (int)$_GET['page'] : '');
                                     $update_url = site_url('users/update/'.$user['id']) . $qs;
-+                                    $delete_url = site_url('users/delete/'.$user['id']) . $qs;
+                                    $delete_url = site_url('users/delete/'.$user['id']) . $qs;
                                     ?>
                                     <a href="<?= $update_url; ?>"
                                         class="text-yellow-100 hover:text-white transition-colors" title="Update">
                                         <i class="fa-solid fa-pen-to-square text-lg"></i>
                                     </a>
-+                                    <a href="<?= $delete_url; ?>"
+                                    <a href="<?= $delete_url; ?>"
                                         class="text-orange-200 hover:text-orange-300 transition-colors" title="Delete">
                                         <i class="fa-solid fa-trash text-lg"></i>
                                     </a>
